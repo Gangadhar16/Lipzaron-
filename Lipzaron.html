@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lipzaron - Home Decor Store</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f5f5f5; }
+    header { background: #000; color: white; padding: 20px; text-align: center; }
+    header img { height: 50px; }
+    nav { background: #222; color: Black; padding: 10px; text-align: center; }
+    nav a { color: white; margin: 0 15px; text-decoration: none; }
+    .hero { background: url('https://via.placeholder.com/1200x400') no-repeat center center/cover; height: 400px; display: flex; align-items: center; justify-content: center; color: white; font-size: 3em; font-weight: bold; }
+    .section { padding: 40px 20px; text-align: center; }
+    .products { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; padding: 20px; }
+    .product { background: white; padding: 15px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    .product img { width: 100%; border-radius: 10px; }
+    .product button { padding: 10px 15px; background: #000; color: white; border: none; cursor: pointer; border-radius: 5px; margin-top: 10px; }
+    .cart { background: white; padding: 20px; margin: 20px auto; border-radius: 10px; max-width: 600px; }
+    footer { background: #000; color: white; text-align: center; padding: 20px; }
+  </style>
+  <script>
+    let cart = [];
+
+    function addToCart(itemName) {
+      cart.push(itemName);
+      alert(itemName + " added to cart.");
+      updateCart();
+    }
+
+    function updateCart() {
+      const cartList = document.getElementById('cart-list');
+      cartList.innerHTML = "";
+      cart.forEach((item, index) => {
+        cartList.innerHTML += `<li>${item} <button onclick="removeItem(${index})">Return</button></li>`;
+      });
+    }
+
+    function removeItem(index) {
+      cart.splice(index, 1);
+      updateCart();
+    }
+  </script>
+</head>
+<body>
+
+  <header>
+    <img src="logo.png" alt="Lipzaron Logo" />
+    <h1>Welcome to Lipzaron</h1>
+    <p>Your One-Stop Store for Home Decor</p>
+  </header>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#shop">Shop</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+    <a href="#cart">Cart</a>
+  </nav>
+
+  <div class="hero" id="home">
+    Home Decor Collection 2025
+  </div>
+
+  <div class="section" id="shop">
+    <h2>Shop by Category</h2>
+    <div class="products">
+      <div class="product">
+        <img src="https://via.placeholder.com/200" alt="Item 1" />
+        <h3>Wall Frame</h3>
+        <button onclick="addToCart('Wall Frame')">Add to Cart</button>
+      </div>
+      <div class="product">
+        <img src="https://via.placeholder.com/200" alt="Item 2" />
+        <h3>Decorative Vase</h3>
+        <button onclick="addToCart('Decorative Vase')">Add to Cart</button>
+      </div>
+      <div class="product">
+        <img src="https://via.placeholder.com/200" alt="Item 3" />
+        <h3>Table Lamp</h3>
+        <button onclick="addToCart('Table Lamp')">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="cart">
+    <h2>Your Cart</h2>
+    <div class="cart">
+      <ul id="cart-list"></ul>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Lipzaron. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
